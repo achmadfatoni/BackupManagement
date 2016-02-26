@@ -39,7 +39,7 @@ class BackupManagementServiceProvider extends ServiceProvider {
 		$this->loadViewsFrom(__DIR__ . '/../../../views/', 'backup-management');
 
 		if (! $this->app->routesAreCached()) {
-			require __DIR__.'/../../../routes.php';
+			require __DIR__ . '/../../../routes/routes.php';
 		}
 
 		$this->publishes([
