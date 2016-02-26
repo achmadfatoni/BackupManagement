@@ -2,13 +2,8 @@
 
 namespace Klsandbox\BackupManagement\Http\Controllers;
 
-
-namespace Klsandbox\BackupManagement\Http\Controllers;
-
-use App\Commands\StartOnDemandBackup;
-use App\Models\BackupRun;
-
-use App\Http\Requests;
+use Klsandbox\BackupManagement\Commands\StartOnDemandBackup;
+use Klsandbox\BackupManagement\Models\BackupRun;
 
 class BackupManagementController extends Controller
 {

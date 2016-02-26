@@ -32,6 +32,12 @@ class BackupManagementServiceProvider extends ServiceProvider {
 	}
 
 	public function boot() {
+		$this->loadViewsFrom(__DIR__.'/views', 'backup-management');
+
+		$this->publishes([
+			__DIR__ . '/../../../views/' => base_path('resources/views')
+		], 'views');
+
 		$this->publishes([
 			__DIR__ . '/../../../database/migrations/' => database_path('/migrations')
 		], 'migrations');

@@ -2,10 +2,7 @@
 
 namespace Klsandbox\BackupManagement\Console\Commands;
 
-
-namespace Klsandbox\BackupManagement\Console\Commands;
-
-use App\Models\BackupRun;
+use Klsandbox\BackupManagement\Models\BackupRun;
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputOption;
 
