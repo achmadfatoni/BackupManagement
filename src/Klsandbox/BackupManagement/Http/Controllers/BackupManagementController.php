@@ -2,6 +2,7 @@
 
 namespace Klsandbox\BackupManagement\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use Klsandbox\BackupManagement\Commands\StartOnDemandBackup;
 use Klsandbox\BackupManagement\Models\BackupRun;
 
@@ -15,7 +16,7 @@ class BackupManagementController extends Controller
      */
     public function index()
     {
-        return view('backup-management.all')->withBackups(BackupRun::orderBy('id', 'desc')->get());
+        return view('backup-management::all')->withBackups(BackupRun::orderBy('id', 'desc')->get());
     }
 
     /**
@@ -28,7 +29,7 @@ class BackupManagementController extends Controller
     {
         $backup = BackupRun::getCompletedById($id);
 
-        return view('backup-management.show')->withBackup($backup);
+        return view('backup-management::show')->withBackup($backup);
     }
 
     /**

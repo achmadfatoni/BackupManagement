@@ -1,6 +1,7 @@
 <?php namespace Klsandbox\BackupManagement;
 
 use Illuminate\Support\ServiceProvider;
+use Klsandbox\BackupManagement\Console\Commands\BackupStart;
 
 class BackupManagementServiceProvider extends ServiceProvider {
 
@@ -16,9 +17,12 @@ class BackupManagementServiceProvider extends ServiceProvider {
 	 *
 	 * @return void
 	 */
-	public function register()
-	{
-		//
+	public function register() {
+		$this->app->singleton('command.klsandbox.backupstart', function($app) {
+			return new BackupStart();
+		});
+
+		$this->commands('command.klsandbox.backupstart');
 	}
 
 	/**
@@ -32,7 +36,7 @@ class BackupManagementServiceProvider extends ServiceProvider {
 	}
 
 	public function boot() {
-		$this->loadViewsFrom(__DIR__.'/views', 'backup-management');
+		$this->loadViewsFrom(__DIR__ . '/../../../views/', 'backup-management');
 
 		$this->publishes([
 			__DIR__ . '/../../../views/' => base_path('resources/views')
