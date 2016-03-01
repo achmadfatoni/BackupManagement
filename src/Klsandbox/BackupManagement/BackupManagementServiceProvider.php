@@ -43,7 +43,7 @@ class BackupManagementServiceProvider extends ServiceProvider {
 		}
 
 		$this->publishes([
-			__DIR__ . '/../../../views/' => base_path('resources/views')
+			__DIR__ . '/../../../views/' => base_path('resources/views/vendor/backup-management')
 		], 'views');
 
 		$this->publishes([
