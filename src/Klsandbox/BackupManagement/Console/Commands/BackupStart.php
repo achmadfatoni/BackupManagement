@@ -39,7 +39,7 @@ class BackupStart extends Command
 
         \Artisan::call('backup:run', array());
 
-        $disk = \Storage::disk(env('BACKUP_FILESYSTEM'));
+        $disk = \Storage::disk(config('backup-management.backup_filesystem'));
         $path = \Config::get('laravel-backup.destination.path');
         $allFiles = $disk->allFiles($path);
 

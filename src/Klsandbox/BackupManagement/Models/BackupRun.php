@@ -79,7 +79,7 @@ class BackupRun extends Model
      */
     public static function deleteByFilepath($path)
     {
-        $disk = \Storage::disk(env('FILESYSTEM'));
+        $disk = \Storage::disk(config('backup-management.filesystem'));
         $allFiles = $disk->allFiles($path);
 
         if (count($allFiles) > 0)
@@ -99,7 +99,7 @@ class BackupRun extends Model
      */
     public static function syncedByFilepath($path)
     {
-        $disk = \Storage::disk(env('FILESYSTEM'));
+        $disk = \Storage::disk(config('backup-management.filesystem'));
         $allFiles = $disk->allFiles($path);
 
         if (count($allFiles) > 0)
