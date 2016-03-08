@@ -3,9 +3,12 @@
 namespace Klsandbox\BackupManagement\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Klsandbox\SiteModel\SiteExtensions;
 
 class BackupRun extends Model
 {
+    use SiteExtensions;
+
     /**
      * @var string
      */
@@ -27,7 +30,7 @@ class BackupRun extends Model
      */
     private static function updateAllByPath($path, $column)
     {
-        $backup = self::where('path_to_backup', $path);
+        $backup = self::forSite()->where('path_to_backup', $path);
 
         if($backup->count() > 0)
         {
@@ -43,7 +46,7 @@ class BackupRun extends Model
      */
     public static function findById($id)
     {
-        $backup = self::find($id);
+        $backup = self::forSite()->find($id);
 
         if(count($backup) > 0)
         {
@@ -61,7 +64,7 @@ class BackupRun extends Model
      */
     public static function getCompletedById($id)
     {
-        $backup = self::where('id', $id)->where('is_completed', 1);
+        $backup = self::forSite()->where('id', $id)->where('is_completed', 1);
 
         if($backup->count() > 0)
         {

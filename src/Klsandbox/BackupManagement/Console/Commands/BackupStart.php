@@ -37,22 +37,20 @@ class BackupStart extends Command
             'output_text' => 'Backup is started'
         ]);
 
-        \Artisan::call('backup:run', array());
+        \Artisan::call('backup:run', []);
+
+        $path = \Config::get('laravel-backup.destination.path');
+
+        $output = \Artisan::output();
+        preg_match('~' . $path . '/[\w\.]+' . '~', $output, $matches);
+        $file = $matches[0];
 
         $disk = \Storage::disk(config('backup-management.backup_filesystem'));
-        $path = \Config::get('laravel-backup.destination.path');
-        $allFiles = $disk->allFiles($path);
-
-        if(count($allFiles) > 0)
-        {
-            $lastFile = count($allFiles) - 1;
-            $file = $allFiles[$lastFile];
-        }
 
         $update = BackupRun::findById($create->id);
         $update->path_to_backup = $file;
         $update->file_size = $disk->size($file);
-        $update->output_text = \Artisan::output();
+        $update->output_text = $output;
         $update->is_completed = 1;
         $update->save();
 

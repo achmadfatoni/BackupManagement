@@ -16,7 +16,7 @@ class BackupManagementController extends Controller
      */
     public function index()
     {
-        return view('backup-management::all')->withBackups(BackupRun::orderBy('id', 'desc')->get());
+        return view('backup-management::all')->withBackups(BackupRun::forSite()->orderBy('id', 'desc')->get());
     }
 
     /**
