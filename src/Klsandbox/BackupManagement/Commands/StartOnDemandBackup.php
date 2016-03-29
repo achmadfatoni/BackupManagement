@@ -2,14 +2,14 @@
 
 namespace Klsandbox\BackupManagement\Commands;
 
-use App\Commands\Command;
+use App\Jobs\Command;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Bus\SelfHandling;
-use Illuminate\Contracts\Queue\ShouldBeQueued;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
-class StartOnDemandBackup extends Command implements SelfHandling, ShouldBeQueued {
+class StartOnDemandBackup extends Command implements SelfHandling, ShouldQueue {
 
 	use InteractsWithQueue, SerializesModels;
 
