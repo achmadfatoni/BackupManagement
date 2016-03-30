@@ -1,21 +1,7 @@
 @extends('app')
 
 @section('page-header')
-    <h2>Backup Management</h2>
-
-    <div class="right-wrapper pull-right">
-        <ol class="breadcrumbs">
-            <li>
-                <a href="{{ url('/') }}">
-                    <i class="fa fa-home"></i>
-                </a>
-            </li>
-            <li><span>Backup Management</span></li>
-            <li><span>Backup Lists</span></li>
-        </ol>
-
-        <div class="sidebar-right-toggle"></div>
-    </div>
+    @include('elements.page-header', ['section_title' => 'Backup Management', 'page_title' => 'Backup List'])
 @endsection
 
 
