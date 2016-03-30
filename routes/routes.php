@@ -5,7 +5,7 @@
 |--------------------------------------------------------------------------
  */
 Route::group(['middleware' => ['auth']], function() {
-    Route::group(['middleware' => ['auth.admin']], function() {
+    Route::group(['middleware' => ['role:admin']], function() {
         Route::group(['prefix' => 'backup-management/'], function() {
             Route::get('start-backup', '\Klsandbox\BackupManagement\Http\Controllers\BackupManagementController@start');
             Route::get('list/all', '\Klsandbox\BackupManagement\Http\Controllers\BackupManagementController@index');
