@@ -5,6 +5,35 @@ namespace Klsandbox\BackupManagement\Models;
 use Illuminate\Database\Eloquent\Model;
 use Klsandbox\SiteModel\SiteExtensions;
 
+/**
+ * Klsandbox\BackupManagement\Models\BackupRun
+ *
+ * @property integer $id
+ * @property string $path_to_backup
+ * @property string $file_size
+ * @property string $output_text
+ * @property string $error_text
+ * @property boolean $is_deleted
+ * @property boolean $is_synced
+ * @property boolean $is_on_demand
+ * @property boolean $is_completed
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property integer $site_id
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereId($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun wherePathToBackup($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereFileSize($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereOutputText($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereErrorText($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereIsDeleted($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereIsSynced($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereIsOnDemand($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereIsCompleted($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereCreatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereSiteId($value)
+ * @mixin \Eloquent
+ */
 class BackupRun extends Model
 {
     use SiteExtensions;
