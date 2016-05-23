@@ -34,7 +34,7 @@ class BackupStart extends Command
         global $file;
 
         $create = BackupRun::create([
-            'output_text' => 'Backup is started'
+            'output_text' => 'Backup is started',
         ]);
 
         \Artisan::call('backup:run', []);

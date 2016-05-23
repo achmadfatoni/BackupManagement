@@ -20,6 +20,7 @@ use Klsandbox\SiteModel\SiteExtensions;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property integer $site_id
+ *
  * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun wherePathToBackup($value)
  * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereFileSize($value)
@@ -48,7 +49,7 @@ class BackupRun extends Model
      */
     protected $fillable = [
         'path_to_backup', 'file_size', 'output_text', 'error_text', 'is_deleted', 'is_synced',
-        'is_on_demand', 'is_completed'
+        'is_on_demand', 'is_completed',
     ];
 
     /**
@@ -61,8 +62,7 @@ class BackupRun extends Model
     {
         $backup = self::forSite()->where('path_to_backup', $path);
 
-        if($backup->count() > 0)
-        {
+        if ($backup->count() > 0) {
             $backup->update([$column => 1]);
         }
     }
@@ -71,14 +71,14 @@ class BackupRun extends Model
      * Find a backup by id.
      *
      * @param $id
+     *
      * @return mixed
      */
     public static function findById($id)
     {
         $backup = self::forSite()->find($id);
 
-        if(count($backup) > 0)
-        {
+        if (count($backup) > 0) {
             return $backup;
         }
 
@@ -89,14 +89,14 @@ class BackupRun extends Model
      * Get a completed backup by id.
      *
      * @param $id
+     *
      * @return mixed
      */
     public static function getCompletedById($id)
     {
         $backup = self::forSite()->where('id', $id)->where('is_completed', 1);
 
-        if($backup->count() > 0)
-        {
+        if ($backup->count() > 0) {
             return $backup->first();
         }
 
@@ -114,10 +114,8 @@ class BackupRun extends Model
         $disk = \Storage::disk(config('backup-management.filesystem'));
         $allFiles = $disk->allFiles($path);
 
-        if (count($allFiles) > 0)
-        {
-            foreach($allFiles as $file)
-            {
+        if (count($allFiles) > 0) {
+            foreach ($allFiles as $file) {
                 self::updateAllByPath($file, 'is_deleted');
             }
         }
@@ -134,13 +132,10 @@ class BackupRun extends Model
         $disk = \Storage::disk(config('backup-management.filesystem'));
         $allFiles = $disk->allFiles($path);
 
-        if (count($allFiles) > 0)
-        {
-            foreach($allFiles as $file)
-            {
+        if (count($allFiles) > 0) {
+            foreach ($allFiles as $file) {
                 self::updateAllByPath($file, 'is_synced');
             }
         }
     }
-
 }

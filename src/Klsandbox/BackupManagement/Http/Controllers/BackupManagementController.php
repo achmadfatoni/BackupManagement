@@ -8,7 +8,6 @@ use Klsandbox\BackupManagement\Models\BackupRun;
 
 class BackupManagementController extends Controller
 {
-
     /**
      * List page of backup management.
      *
@@ -23,6 +22,7 @@ class BackupManagementController extends Controller
      * Show a backup info.
      *
      * @param $id
+     *
      * @return mixed
      */
     public function show($id)
@@ -48,6 +48,7 @@ class BackupManagementController extends Controller
      * Sync backups by file path.
      *
      * @param $path
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function synced($path)
@@ -61,6 +62,7 @@ class BackupManagementController extends Controller
      * Delete backups by file path.
      *
      * @param $path
+     *
      * @return \Illuminate\Http\JsonResponse
      */
     public function delete($path)
@@ -69,5 +71,4 @@ class BackupManagementController extends Controller
 
         return response()->json(['message' => 'Success']);
     }
-
 }
