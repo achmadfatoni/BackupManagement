@@ -20,7 +20,6 @@ use Klsandbox\SiteModel\SiteExtensions;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property integer $site_id
- *
  * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereId($value)
  * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun wherePathToBackup($value)
  * @method static \Illuminate\Database\Query\Builder|\Klsandbox\BackupManagement\Models\BackupRun whereFileSize($value)
